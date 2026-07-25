@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Implements the vendor contract from rac-core's ADR-101: sparse-checkout
+# Implements the vendor contract from core's ADR-101: sparse-checkout
 # each source repo's docs/ at build time, never commit the result.
 set -euo pipefail
 
@@ -27,12 +27,12 @@ vendor_repo() {
   cp -r "$checkout_dir/$path/." "$target_dir/"
 }
 
-vendor_repo rac-core https://github.com/itsthelore/rac-core.git main docs
+vendor_repo core https://github.com/asdecided/core.git main docs
 
 # The org root (docs/index.md) already carries its own splash hero; strip
-# the vendored rac-core home's template/hide frontmatter so it renders as a
+# the vendored core home's template/hide frontmatter so it renders as a
 # normal nav page ("Overview") instead of a second, mislinked splash.
-python3 - "$docs_dir/rac-core/index.md" <<'PYEOF'
+python3 - "$docs_dir/core/index.md" <<'PYEOF'
 import re, sys
 
 path = sys.argv[1]
