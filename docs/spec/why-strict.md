@@ -46,12 +46,12 @@ superseded architecture decision re-introduces the exact mistake your team
 already paid to rule out. The failure mode isn't degraded output; it's
 confident regression, delivered with a citation.
 
-## What rac-spec specifies
+## What the AsDecided specification specifies
 
 RAC (Requirements as Code) is the semantic layer for prescriptive
 knowledge — requirements, decisions, designs — written on the same carrier
-OKF standardizes. Today we're publishing rac-spec, the specification, as its
-own versioned document, separate from rac-core, the reference implementation
+OKF standardizes. Today we're publishing the RAC specification as its own
+versioned document, separate from AsDecided Core, the reference implementation
 that has been dogfooding it across 29 releases.
 
 The spec formalizes four things the carrier layer leaves open:
@@ -125,7 +125,7 @@ our Python.
 
 If you're running agents against team knowledge and you've hit the
 confident-regression failure, the spec is at
-[github.com/itsthelore/rac-spec](https://github.com/itsthelore/rac-spec/blob/main/SPEC.md),
-the reference implementation is `pip install rac-core`, and the fastest way
+[github.com/asdecided/spec](https://github.com/asdecided/spec/blob/main/SPEC.md),
+the reference implementation is `brew install asdecided/tap/asdecided-core`, and the fastest way
 to form an opinion is to run `rac validate` against the examples directory
 and read what it rejects and why.

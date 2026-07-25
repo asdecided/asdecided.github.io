@@ -7,7 +7,7 @@
   docs/index.md and render through {{ page.content }} so they remain plain
   Markdown.
 
-  TEMPORARY: hero leads with the rac-spec announcement essay rather than
+  TEMPORARY: hero leads with the specification announcement essay rather than
   the product pitch, at the maintainer's explicit request ("for now").
   The install command moved out of the hero into "How it works" in
   docs/index.md; revert to the product-led hero (git history has it) once
@@ -26,14 +26,14 @@
 
   <div class="lore-splash__actions">
     <nav class="lore-cta" aria-label="Read the announcement">
-      <a class="lore-btn lore-btn--primary" href="{{ 'rac-spec/why-strict/' | url }}">Read the essay →</a>
-      <a class="lore-btn" href="https://github.com/itsthelore/rac-spec/blob/main/SPEC.md">View the spec</a>
-      <a class="lore-btn" href="{{ 'rac-core/quickstart/' | url }}">Get started with Lore</a>
+      <a class="lore-btn lore-btn--primary" href="{{ 'spec/why-strict/' | url }}">Read the essay →</a>
+      <a class="lore-btn" href="https://github.com/asdecided/spec/blob/main/SPEC.md">View the spec</a>
+      <a class="lore-btn" href="{{ 'core/quickstart/' | url }}">Get started with AsDecided</a>
     </nav>
 
     {% if config.extra.total_org_stars and config.extra.total_org_stars | int > 0 %}
     <p class="lore-splash__stars">
-      <a href="https://github.com/itsthelore">★ {{ config.extra.total_org_stars }} stars across itsthelore's open-source repos</a>
+      <a href="https://github.com/asdecided">★ {{ config.extra.total_org_stars }} stars across AsDecided's open-source repos</a>
     </p>
     {% endif %}
   </div>

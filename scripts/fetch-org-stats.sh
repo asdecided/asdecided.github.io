@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Sums stargazers_count across every public repo in the itsthelore org and
+# Sums stargazers_count across every public repo in the AsDecided org and
 # exposes it to mkdocs.yml's `extra.total_org_stars` via the TOTAL_ORG_STARS
 # env var (mkdocs.yml reads it with the !ENV tag, default 0). In GitHub
 # Actions, GITHUB_TOKEN gives a real count; without a token (local dev)
 # this is skipped and the site falls back to hiding the stat entirely.
 set -euo pipefail
 
-ORG=itsthelore
+ORG=asdecided
 
 if [ -z "${GITHUB_TOKEN:-}" ]; then
   echo "GITHUB_TOKEN not set — skipping live star fetch (site will hide the stat)." >&2
@@ -22,7 +22,7 @@ token = os.environ["GITHUB_TOKEN"]
 headers = {
     "Authorization": f"Bearer {token}",
     "Accept": "application/vnd.github+json",
-    "User-Agent": "itsthelore-site-build",
+    "User-Agent": "asdecided-site-build",
 }
 
 total = 0

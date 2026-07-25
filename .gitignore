@@ -1,6 +1,6 @@
 site/
 
-# Build-time vendored content (see rac-core's ADR-101 — never committed).
+# Build-time vendored content (see core's ADR-101 — never committed).
 .vendor/
-docs/rac-core/*
-!docs/rac-core/.gitkeep
+docs/core/*
+!docs/core/.gitkeep

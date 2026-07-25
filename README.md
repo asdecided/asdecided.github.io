@@ -1,28 +1,28 @@
-# itsthelore.github.io
+# AsDecided documentation site
 
-The `itsthelore` org's documentation site, served at
-https://itsthelore.github.io/. Built with [MkDocs](https://www.mkdocs.org)
-(Material theme) — the same tool and theme `rac-core` already uses for its
-own docs, so the org site and every product's docs read as one brand.
+The [`asdecided`](https://github.com/asdecided) organization documentation
+site, served at https://asdecided.github.io/. It uses the same MkDocs Material
+foundation as the native core documentation so every product reads as one
+brand.
 Deployed by GitHub Actions on every push to `main`.
 
 ## How content gets here
 
-Sections under `/rac-core/` (and future product sections) are **vendored,
+Sections under `/core/` (and future product sections) are **vendored,
 not authored here**: `scripts/vendor-docs.sh` sparse-checks out each source
 repo's `docs/` directory into `docs/<slug>/` before `mkdocs build`. Nothing
-vendored is committed — `docs/rac-core/` is gitignored. Because it lands in
+vendored is committed — `docs/core/` is gitignored. Because it lands in
 the same MkDocs `docs_dir` as everything else, the source repos' existing
 relative links between pages (`[relationships.md](relationships.md)`, `cli.md#schema`,
 etc.) resolve correctly with no rewriting.
 
-The rationale and contract are recorded in `rac-core`'s
-[ADR-101](https://github.com/itsthelore/rac-core/blob/main/rac/decisions/adr-101-org-docs-site-and-topology.md).
+The rationale and contract are recorded in core's
+[ADR-101](https://github.com/asdecided/core/blob/main/decisions/decisions/adr-101-org-docs-site-and-topology.md).
 
 The site's own visual identity (light theme, Inter for prose, JetBrains
-Mono for code, the lamplighter at icon size only) is recorded in `rac-core`'s
-[ADR-102](https://github.com/itsthelore/rac-core/blob/main/rac/decisions/adr-102-org-site-brand-direction.md):
-it deliberately *rhymes with, but does not match*, `rac-core`'s
+Mono for code, the lamplighter at icon size only) is recorded in core's
+[ADR-102](https://github.com/asdecided/core/blob/main/decisions/decisions/adr-102-org-site-brand-direction.md):
+it deliberately *rhymes with, but does not match*, core's
 `rac-localview` product-UI theme (dark, mono-everywhere) — three shared
 constants (the amber accent, mono-for-code, the lamplighter), everything
 else per surface. Brand assets (`docs/fonts/`,
@@ -37,13 +37,13 @@ Adding a new product section:
 3. Add a card to "The ecosystem" grid in `docs/index.md`.
 
 **The homepage hero is temporarily spec-led** (headline, CTAs, and eyebrow
-all point at the rac-spec announcement essay, per an explicit "for now"
+all point at the specification announcement essay, per an explicit "for now"
 request) instead of the previous product pitch — see the comment at the
 top of `overrides/home.html` for what to restore and why.
 
 ## Org-wide star count
 
-The hero shows a "★ N stars across itsthelore's open-source repos" line,
+The hero shows a "★ N stars across AsDecided's open-source repos" line,
 sourced by `scripts/fetch-org-stats.sh` (sums `stargazers_count` across the
 org's public repos via the GitHub API) and exposed to `overrides/home.html`
 through `mkdocs.yml`'s `extra.total_org_stars` (an `!ENV` tag reading the
@@ -57,7 +57,7 @@ hero hides the line entirely.
 `docs/essays.md` (nav label "Essays") is a **hand-curated index**, not an
 auto-generated blog. An essay lives wherever it makes most sense — a spec
 announcement lives inside the relevant section (e.g.
-`docs/rac-spec/why-strict.md`) rather than a generic `/blog/` — and gets one
+`docs/spec/why-strict.md`) rather than a generic `/blog/` — and gets one
 card added to `docs/essays.md` linking to it. This is deliberate: essays
 don't all belong under one directory, so there's nothing for a plugin to
 auto-discover.
@@ -85,7 +85,7 @@ override — to add `og:*` and `twitter:*` meta tags to every page via
   brand or tagline changes.
 - Add a `description:` to a page's frontmatter for a tailored social
   preview instead of the generic site description (see
-  `docs/rac-spec/why-strict.md` for an example).
+  `docs/spec/why-strict.md` for an example).
 
 ## Local development
 

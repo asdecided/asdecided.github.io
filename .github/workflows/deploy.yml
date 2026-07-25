@@ -1,7 +1,7 @@
 name: Deploy
 
 # Build-only strict MkDocs build so a broken vendored page or nav entry
-# fails CI instead of deploying. See scripts/vendor-docs.sh and rac-core's
+# fails CI instead of deploying. See scripts/vendor-docs.sh and core's
 # ADR-101 for the vendoring contract.
 
 on:

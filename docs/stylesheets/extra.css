@@ -428,7 +428,7 @@ body,
   display: none;
 }
 
-/* ---- docs polish (applies passively to vendored rac-core pages) ------- */
+/* ---- docs polish (applies passively to vendored core pages) ----------- */
 .md-typeset code {
   background: var(--lore-bg-element);
   border-radius: 4px;

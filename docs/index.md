@@ -5,12 +5,12 @@ hide:
   - toc
 ---
 
-RAC is the engine underneath: **Lore** keeps a team's recorded
+**AsDecided** keeps a team's recorded
 requirements, decisions, and designs as typed Markdown in the repo,
 validates them in CI, and serves them read-only to coding agents over MCP.
 
 ```
-pip install rac-core
+brew install asdecided/tap/asdecided-core
 ```
 
 ## How it works
@@ -23,7 +23,7 @@ pip install rac-core
     <p>CI rejects malformed artifacts, broken links, and references to superseded
     decisions before they land.</p></div>
   <div><span class="lore-step__num">03</span><h3>Serve</h3>
-    <p>Your agent queries Lore over MCP — four read-only tools — and cites
+    <p>Your agent queries AsDecided over MCP and cites
     decisions by ID instead of violating them.</p></div>
 </div>
 
@@ -31,8 +31,8 @@ pip install rac-core
 > Lore, finds your soft-delete decision, cites it by ID, and proposes the
 > compliant change instead of reintroducing what you removed on purpose.
 
-Serving happens over the [lore MCP server](rac-core/mcp.md); the
-[`rac` CLI](rac-core/cli.md) covers validation, inspection, and ingestion.
+Serving happens over the [AsDecided MCP server](core/mcp.md); the
+[`decided` CLI](core/cli.md) covers validation and inspection.
 
 ## Why it's different
 
@@ -54,8 +54,8 @@ Serving happens over the [lore MCP server](rac-core/mcp.md); the
 ## The ecosystem
 
 <div class="lore-grid" markdown="0">
-  <div class="lore-card"><h3>Lore (rac-core)</h3>
-    <p>The engine: the rac CLI, validation gates, and the read-only lore MCP
+  <div class="lore-card"><h3>Core</h3>
+    <p>The native Rust engine: the decided CLI, validation gates, and the read-only MCP
     server. This is what you install.</p></div>
   <div class="lore-card"><h3>Proofkeeper</h3>
     <p>Turns each recorded capability into a re-runnable Playwright test,
@@ -63,32 +63,31 @@ Serving happens over the [lore MCP server](rac-core/mcp.md); the
   <div class="lore-card"><h3>Wayfinder</h3>
     <p>Deterministic prompt-complexity routing — a hard-or-easy call on every
     prompt, offline, no model call.</p></div>
-  <div class="lore-card"><h3>rac-sdk</h3>
+  <div class="lore-card"><h3>SDK</h3>
     <p>Non-Python language SDKs — thin clients over the engine's stable
     <code>--json</code> contracts.</p></div>
-  <div class="lore-card"><h3>rac-editors</h3>
+  <div class="lore-card"><h3>Editors</h3>
     <p>IDE and editor integrations, one subdir per client.</p></div>
-  <div class="lore-card"><h3>rac-ci</h3>
+  <div class="lore-card"><h3>CI</h3>
     <p>The CI delivery surface — validation and gating wrappers, GitHub
     first.</p></div>
-  <div class="lore-card"><h3>rac-benchmarks</h3>
+  <div class="lore-card"><h3>Benchmarks</h3>
     <p>Evaluation suites, one subdir per benchmark.</p></div>
 </div>
 
-Plus rac-connectors and everything else — see the
-[full repository map](rac-core/ecosystem.md) or the
-[itsthelore org on GitHub](https://github.com/itsthelore).
+Plus connectors and everything else — see the
+[full repository map](core/ecosystem.md) or the
+[AsDecided organization on GitHub](https://github.com/asdecided).
 
-<p class="lore-footnote">Lore is built on RAC (requirements-as-code), the
-open-source engine — <code>pip install rac-core</code> installs the CLI and
-the <code>lore</code> MCP server together.</p>
+<p class="lore-footnote">RAC remains the stable artifact contract underneath.
+<code>asdecided-core</code> installs the native CLI and MCP server together.</p>
 
 <div class="lore-ctaband" markdown="0">
   <h2>Up and running in five minutes.</h2>
   <p>Install the CLI, scaffold your first artifact, connect your agent.</p>
   <nav class="lore-cta">
-    <a class="lore-btn lore-btn--primary" href="rac-core/quickstart/">Quickstart →</a>
-    <a class="lore-btn" href="https://github.com/itsthelore">View on GitHub</a>
+    <a class="lore-btn lore-btn--primary" href="core/quickstart/">Quickstart →</a>
+    <a class="lore-btn" href="https://github.com/asdecided">View on GitHub</a>
   </nav>
-  <p class="lore-footnote">Lore is open source and under active development.</p>
+  <p class="lore-footnote">AsDecided is open source and under active development.</p>
 </div>
