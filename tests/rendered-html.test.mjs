@@ -36,7 +36,6 @@ test("server-renders the AsDecided product site", async () => {
   assert.match(html, /without rewriting the past/);
   assert.match(html, /brew install asdecided\/tap\/asdecided-core/);
   assert.match(html, /Ask the repository, not another model/);
-  assert.match(html, /A deliberately narrow trust boundary/);
-  assert.match(html, /Small repositories\. Explicit responsibilities\./);
+  assert.match(html, /One boundary per repository\./);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
