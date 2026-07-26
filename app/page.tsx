@@ -1,42 +1,44 @@
 import { DecisionConsole } from "./DecisionConsole";
 import { BrandHero } from "./BrandHero";
 
+const knowledgeBase = "https://asdecided.github.io";
+
 const repositories = [
   {
     name: "Core",
     status: "Available",
     description: "Native CLI and read-only MCP.",
-    href: "https://github.com/asdecided/core",
+    href: `${knowledgeBase}/start-here/`,
   },
   {
     name: "Specification",
     status: "Open contract",
     description: "The language-neutral contract.",
-    href: "https://github.com/asdecided/spec",
+    href: `${knowledgeBase}/spec/`,
   },
   {
     name: "CI",
     status: "Available",
     description: "Decision-aware merge gates.",
-    href: "https://github.com/asdecided/ci",
+    href: `${knowledgeBase}/vendor/core/decisions-on-pr/`,
   },
   {
     name: "Connectors",
     status: "Pre-release",
     description: "Explicit inbound bridges.",
-    href: "https://github.com/asdecided/connectors",
+    href: `${knowledgeBase}/ecosystem/`,
   },
   {
     name: "Proofkeeper",
     status: "Available",
     description: "Requirements turned into tests.",
-    href: "https://github.com/asdecided/proofkeeper",
+    href: `${knowledgeBase}/ecosystem/`,
   },
   {
     name: "Benchmarks",
     status: "Measured",
     description: "Evidence without an LLM judge.",
-    href: "https://github.com/asdecided/benchmarks",
+    href: `${knowledgeBase}/vendor/core/scale/`,
   },
 ];
 
@@ -100,7 +102,7 @@ export default function Home() {
           </p>
           <a
             className="text-link"
-            href="https://github.com/asdecided/core/blob/main/docs/quickstart.md"
+            href={`${knowledgeBase}/vendor/core/quickstart/`}
           >
             Follow the complete quickstart <Arrow />
           </a>
@@ -173,8 +175,8 @@ export default function Home() {
         </div>
         <p>Engineering decisions your agents can follow. Build, as decided.</p>
         <div className="footer-links">
-          <a href="https://github.com/asdecided/core">Core</a>
-          <a href="https://github.com/asdecided/spec">Spec</a>
+          <a href={`${knowledgeBase}/start-here/`}>Core</a>
+          <a href={`${knowledgeBase}/spec/`}>Spec</a>
           <a href="https://github.com/asdecided">GitHub</a>
         </div>
       </footer>
