@@ -64,31 +64,40 @@ function Arrow() {
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="AsDecided home">
-          <img src="/favicon.png" alt="" width="32" height="32" />
-          <span>AsDecided</span>
+      <section className="brand-hero" id="top" aria-labelledby="brand-tagline">
+        <img
+          className="brand-eyes"
+          src="/brand-mark.jpg"
+          alt="AsDecided stepped yellow eyes"
+          width="720"
+          height="280"
+        />
+        <p className="brand-tagline" id="brand-tagline">
+          Build, as decided<span>.</span>
+        </p>
+        <a className="scroll-cue" href="#introduction" aria-label="Discover AsDecided">
+          <span>Scroll to inspect</span>
+          <span aria-hidden="true">↓</span>
         </a>
-        <nav aria-label="Primary navigation">
-          <a href="#method">Method</a>
-          <a href="#install">Install</a>
-          <a href="#ecosystem">Ecosystem</a>
-          <a href="https://github.com/asdecided">
-            GitHub <Arrow />
-          </a>
-        </nav>
-      </header>
+      </section>
 
-      <section className="hero" id="top">
-        <div className="hero-copy">
+      <section className="intro-section" id="introduction" aria-labelledby="intro-title">
+        <div className="intro-index">
+          <span>AS DECIDED / 001</span>
+          <span>LOCAL DECISION INFRASTRUCTURE</span>
+        </div>
+        <div className="intro-grid">
+          <div>
           <p className="eyebrow">
             <span className="signal" aria-hidden="true" />
-            Local decision infrastructure
+            The product
           </p>
-          <h1>
+          <h1 id="intro-title">
             Your agents can move fast
             <span>without rewriting the past.</span>
           </h1>
+          </div>
+          <div className="intro-detail">
           <p className="hero-intro">
             AsDecided keeps the product decisions behind your code in a typed,
             validated record your coding agents can actually follow.
@@ -118,22 +127,7 @@ export default function Home() {
               <dd>Markdown + Git</dd>
             </div>
           </dl>
-        </div>
-
-        <div className="hero-visual">
-          <div className="ledger-mark" aria-hidden="true">
-            <span>DECISION</span>
-            <span>RELATION</span>
-            <span>RECORD</span>
           </div>
-          <img
-            className="brand-symbol"
-            src="/brand-mark.jpg"
-            alt="AsDecided stepped decision-link mark"
-            width="720"
-            height="280"
-          />
-          <p className="visual-caption">Build, as decided<span>.</span></p>
         </div>
       </section>
 
