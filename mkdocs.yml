@@ -1,74 +1,79 @@
-site_name: AsDecided
+site_name: AsDecided Knowledge Base
 site_description: >-
-  Engineering decisions your agents can follow — the AsDecided documentation
-  site.
+  The specification, concepts, how-to guides, and reference for AsDecided.
 site_url: https://asdecided.github.io/
 repo_url: https://github.com/asdecided
 repo_name: asdecided
+docs_dir: knowledge
 
 theme:
   name: material
-  custom_dir: overrides
   font: false
   language: en
-  favicon: images/favicon.png
-  logo: images/favicon.png
+  logo: assets/favicon.png
+  favicon: assets/favicon.png
   palette:
-    scheme: default
+    scheme: slate
   features:
     - content.code.copy
+    - navigation.indexes
+    - navigation.sections
     - navigation.top
-    - navigation.footer
+    - search.highlight
+    - search.suggest
     - toc.follow
-
-extra_css:
-  - stylesheets/extra.css
-
-copyright: "© 2026 AsDecided"
-
-extra:
-  # Set by scripts/fetch-org-stats.sh via the TOTAL_ORG_STARS env var
-  # (GitHub Actions only — GITHUB_TOKEN gives org-wide read access there).
-  # Falls back to 0 for local builds; the hero hides the stat at 0.
-  total_org_stars: !ENV [TOTAL_ORG_STARS, 0]
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/asdecided
 
 plugins:
   - search
 
-# core/integration-recipes.md deliberately links to examples/ outside
-# docs_dir (rendered by GitHub, not this site) — not a broken link, just one
-# MkDocs can't resolve locally. Downgraded so --strict doesn't abort on
-# vendored content we don't author. Core's own docs.yml build has the
-# same warning and is not currently strict-clean for it either.
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - stylesheets/knowledge.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/asdecided
+
+copyright: "© 2026 AsDecided · Build, as decided."
+
 validation:
   links:
     not_found: info
 
 nav:
   - Home: index.md
-  - Essays: essays.md
-  - Get started:
-      - Overview: core/index.md
-      - Quickstart: core/quickstart.md
-      - Connect your agent: core/mcp.md
-  - Guides:
-      - Shared Server: core/shared-server.md
-      - Context Cost: core/context-cost.md
-      - Watchkeeper: core/watchkeeper.md
-      - Repository Workflow: core/repo-workflow.md
-      - Examples: core/examples.md
+  - Start here:
+      - Overview: start-here.md
+      - Five-minute quickstart: vendor/core/quickstart.md
+      - Connect an agent: vendor/core/mcp.md
+  - Concepts:
+      - Knowledge model: concepts/index.md
+      - Artifact types: vendor/core/artifacts.md
+      - Relationships: vendor/core/relationships.md
+      - Repository workflow: vendor/core/repo-workflow.md
+  - Specification:
+      - Specification map: spec/index.md
+      - Normative RAC specification: vendor/spec/SPEC.md
+      - Status lifecycle: vendor/spec/vocabulary/status.md
+      - Relationship vocabulary: vendor/spec/vocabulary/relationships.md
+      - Conformance: vendor/spec/conformance/conformance.md
+      - Schemas: spec/schemas.md
+  - How to:
+      - How-to index: how-to/index.md
+      - Validate a corpus: vendor/core/validation.md
+      - Surface decisions on PRs: vendor/core/decisions-on-pr.md
+      - Review product knowledge: vendor/core/watchkeeper.md
+      - Operate a shared server: vendor/core/shared-server.md
+      - Integrate another agent: vendor/core/integration-recipes.md
   - Reference:
-      - CLI Reference: core/cli.md
-      - Artifacts: core/artifacts.md
-      - Relationships: core/relationships.md
-      - Validation: core/validation.md
-  - Operate:
-      - Governance: core/governance.md
-      - Security: core/security.md
-      - OKF Profile: core/okf-profile.md
-  - Project:
-      - Ecosystem: core/ecosystem.md
-      - Testing & Contributing: core/testing.md
+      - Reference map: reference/index.md
+      - CLI: vendor/core/cli.md
+      - Security: vendor/core/security.md
+      - Scale and performance: vendor/core/scale.md
+      - OKF profile: vendor/core/okf-profile.md
+  - Ecosystem: ecosystem.md
