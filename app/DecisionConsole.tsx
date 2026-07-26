@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 
 const queries = [
   {
@@ -37,12 +38,45 @@ const queries = [
 
 export function DecisionConsole() {
   const [activeId, setActiveId] = useState(queries[0].id);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = queries.find((query) => query.id === activeId) ?? queries[0];
+
+  const selectTab = (index: number) => {
+    const next = queries[index];
+    setActiveId(next.id);
+    tabRefs.current[index]?.focus();
+  };
+
+  const handleTabKey = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    let nextIndex: number | undefined;
+
+    if (event.key === "ArrowRight") {
+      nextIndex = (index + 1) % queries.length;
+    } else if (event.key === "ArrowLeft") {
+      nextIndex = (index - 1 + queries.length) % queries.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = queries.length - 1;
+    }
+
+    if (nextIndex !== undefined) {
+      event.preventDefault();
+      selectTab(nextIndex);
+    }
+  };
 
   return (
     <div className="decision-console">
-      <div className="console-tabs" role="tablist" aria-label="Example repository queries">
-        {queries.map((query) => (
+      <div
+        className="console-tabs"
+        role="tablist"
+        aria-label="Example repository queries"
+      >
+        {queries.map((query, index) => (
           <button
             type="button"
             role="tab"
@@ -51,6 +85,11 @@ export function DecisionConsole() {
             id={`tab-${query.id}`}
             key={query.id}
             onClick={() => setActiveId(query.id)}
+            onKeyDown={(event) => handleTabKey(event, index)}
+            ref={(element) => {
+              tabRefs.current[index] = element;
+            }}
+            tabIndex={active.id === query.id ? 0 : -1}
           >
             <span className="tab-marker" aria-hidden="true" />
             {query.label}
@@ -62,6 +101,7 @@ export function DecisionConsole() {
         id="decision-result"
         role="tabpanel"
         aria-labelledby={`tab-${active.id}`}
+        aria-live="polite"
         key={active.id}
       >
         <div className="query-pane">
