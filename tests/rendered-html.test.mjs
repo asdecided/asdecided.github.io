@@ -37,6 +37,9 @@ test("server-renders the AsDecided product site", async () => {
   assert.match(html, /brew install asdecided\/tap\/asdecided-core/);
   assert.match(html, /Ask the repository, not another model/);
   assert.match(html, /One boundary per repository\./);
+  assert.match(html, /href="#introduction"/);
+  assert.match(html, /role="tablist"/);
+  assert.match(html, /aria-live="polite"/);
   assert.match(html, /https:\/\/asdecided\.github\.io\/vendor\/core\/quickstart\//);
   assert.match(html, /https:\/\/asdecided\.github\.io\/spec\//);
   assert.doesNotMatch(html, /github\.com\/asdecided\/core\/blob\/main\/docs/);

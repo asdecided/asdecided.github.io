@@ -2,6 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
+function smoothstep(start: number, end: number, value: number) {
+  const progress = Math.min(Math.max((value - start) / (end - start), 0), 1);
+  return progress * progress * (3 - 2 * progress);
+}
+
 export function BrandHero() {
   const heroRef = useRef<HTMLElement>(null);
 
@@ -10,25 +15,56 @@ export function BrandHero() {
     if (!hero) return;
 
     let frame = 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const update = () => {
       frame = 0;
-      const revealDistance = Math.max(window.innerHeight * 0.42, 280);
-      const progress = Math.min(Math.max(window.scrollY / revealDistance, 0), 1);
-      hero.style.setProperty("--reveal", progress.toFixed(3));
+      if (reducedMotion.matches) {
+        hero.style.setProperty("--cue-opacity", "0");
+        hero.style.setProperty("--cue-y", "0.75rem");
+        hero.style.setProperty("--tagline-opacity", "1");
+        hero.style.setProperty("--tagline-y", "0rem");
+        hero.style.setProperty("--eyes-opacity", "1");
+        hero.style.setProperty("--eyes-scale", "1");
+        hero.style.setProperty("--lockup-y", "0rem");
+        return;
+      }
+
+      const rect = hero.getBoundingClientRect();
+      const travel = Math.max(hero.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
+      const cue = smoothstep(0.02, 0.2, progress);
+      const tagline = smoothstep(0.16, 0.58, progress);
+      const exit = smoothstep(0.48, 0.96, progress);
+
+      hero.style.setProperty("--cue-opacity", (1 - cue).toFixed(4));
+      hero.style.setProperty("--cue-y", `${(cue * 0.75).toFixed(4)}rem`);
+      hero.style.setProperty(
+        "--tagline-opacity",
+        tagline.toFixed(4),
+      );
+      hero.style.setProperty(
+        "--tagline-y",
+        `${((1 - tagline) * 1.5 - exit * 2.25).toFixed(4)}rem`,
+      );
+      hero.style.setProperty("--eyes-opacity", (1 - exit * 0.08).toFixed(4));
+      hero.style.setProperty("--eyes-scale", (1 - exit * 0.035).toFixed(4));
+      hero.style.setProperty("--lockup-y", `${(-exit * 2.25).toFixed(4)}rem`);
     };
 
-    const onScroll = () => {
+    const scheduleUpdate = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
     };
 
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    reducedMotion.addEventListener("change", scheduleUpdate);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      reducedMotion.removeEventListener("change", scheduleUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
@@ -51,10 +87,11 @@ export function BrandHero() {
         <p className="brand-tagline" id="brand-tagline">
           Build, as decided<span>.</span>
         </p>
-        <span className="scroll-cue" aria-hidden="true">
+        <a className="scroll-cue" href="#introduction">
           Scroll
-          <span>↓</span>
-        </span>
+          <span aria-hidden="true">↓</span>
+          <span className="sr-only"> to the introduction</span>
+        </a>
       </div>
     </section>
   );

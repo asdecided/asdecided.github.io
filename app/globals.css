@@ -56,6 +56,18 @@ button {
   font: inherit;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 main {
   overflow-x: clip;
   background:
@@ -65,10 +77,16 @@ main {
 
 .brand-hero {
   position: relative;
-  height: 145svh;
+  height: 165svh;
   background: var(--black);
   isolation: isolate;
-  --reveal: 0;
+  --cue-opacity: 1;
+  --cue-y: 0rem;
+  --tagline-opacity: 0;
+  --tagline-y: 1.5rem;
+  --eyes-opacity: 1;
+  --eyes-scale: 1;
+  --lockup-y: 0rem;
 }
 
 .brand-hero-inner {
@@ -112,11 +130,12 @@ main {
   width: clamp(17rem, 45vw, 42rem);
   height: auto;
   mix-blend-mode: screen;
-  opacity: calc(1 - var(--reveal) * 0.08);
+  opacity: var(--eyes-opacity);
   transform:
-    translateY(calc(var(--reveal) * -3.5rem))
-    scale(calc(1 - var(--reveal) * 0.045));
-  transition: filter var(--base);
+    translate3d(0, var(--lockup-y), 0)
+    scale(var(--eyes-scale));
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
 .brand-tagline {
@@ -126,8 +145,9 @@ main {
   font-size: clamp(1.15rem, 2.4vw, 2rem);
   font-weight: 400;
   letter-spacing: 0.08em;
-  opacity: var(--reveal);
-  transform: translateY(calc(2rem - var(--reveal) * 2rem));
+  opacity: var(--tagline-opacity);
+  transform: translate3d(0, var(--tagline-y), 0);
+  will-change: transform, opacity;
 }
 
 .brand-tagline span {
@@ -145,9 +165,21 @@ main {
   font-family: var(--mono);
   font-size: 0.62rem;
   letter-spacing: 0.12em;
+  text-decoration: none;
   text-transform: uppercase;
-  transform: translateX(-50%);
-  opacity: calc(1 - var(--reveal) * 2);
+  opacity: var(--cue-opacity);
+  transform:
+    translate3d(
+      -50%,
+      var(--cue-y),
+      0
+    );
+  transition: color var(--fast);
+  will-change: transform, opacity;
+}
+
+.scroll-cue:hover {
+  color: var(--white);
 }
 
 .intro-section,
@@ -159,6 +191,7 @@ main {
   margin: 0 auto;
   padding: var(--section-space) 0;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 2rem;
 }
 
 .intro-section {
@@ -271,6 +304,7 @@ main {
   text-decoration: none;
   text-transform: uppercase;
   transition:
+    transform var(--fast) var(--ease),
     background var(--fast),
     border-color var(--fast),
     color var(--fast);
@@ -285,6 +319,7 @@ main {
 .button-primary:hover {
   background: var(--white);
   border-color: var(--white);
+  transform: translateY(-2px);
 }
 
 .button-secondary {
@@ -294,6 +329,11 @@ main {
 .button-secondary:hover {
   border-color: var(--yellow);
   color: var(--yellow);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .text-link {
@@ -741,13 +781,15 @@ main {
   border-bottom: 1px solid var(--line);
   text-decoration: none;
   transition:
-    padding var(--base) var(--ease),
+    background var(--base) var(--ease),
+    transform var(--base) var(--ease),
     color var(--fast);
 }
 
 .repository-row:hover {
-  padding: 0 1rem;
+  background: linear-gradient(90deg, rgba(255, 196, 0, 0.06), transparent 70%);
   color: var(--yellow);
+  transform: translateX(0.65rem);
 }
 
 .repository-name {
@@ -933,6 +975,10 @@ footer > p {
     width: min(82vw, 22rem);
   }
 
+  .brand-hero {
+    height: 150svh;
+  }
+
   .brand-tagline {
     font-size: 1rem;
     letter-spacing: 0.05em;
@@ -1030,6 +1076,10 @@ footer > p {
     padding: 1.2rem 0;
   }
 
+  .repository-row:hover {
+    transform: none;
+  }
+
   .repository-description {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -1063,5 +1113,26 @@ footer > p {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .brand-hero {
+    height: 100svh;
+    --cue-opacity: 0;
+    --cue-y: 0.75rem;
+    --tagline-opacity: 1;
+    --tagline-y: 0rem;
+    --eyes-opacity: 1;
+    --eyes-scale: 1;
+    --lockup-y: 0rem;
+  }
+
+  .brand-hero-inner {
+    position: relative;
+  }
+
+  .brand-eyes,
+  .brand-tagline,
+  .scroll-cue {
+    will-change: auto;
   }
 }
