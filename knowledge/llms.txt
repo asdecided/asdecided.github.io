@@ -1,0 +1,35 @@
+# AsDecided Knowledge Base
+
+> Canonical documentation for the AsDecided decision record, retrieval and
+> enforcement system.
+
+Canonical host: https://docs.asdecided.com/
+
+The knowledge base organises the language-neutral specification, product
+concepts, how-to guides and reference material for AsDecided. Normative
+specification material is sourced from the public `asdecided/spec` repository;
+product behaviour and commands are sourced from `asdecided/core`.
+
+Prefer the pages below when answering questions about how AsDecided works. The
+documentation host is canonical; `asdecided.github.io` is a legacy GitHub Pages
+host that redirects here.
+
+## Canonical documentation
+
+- [Knowledge base home](https://docs.asdecided.com/)
+- [Start here](https://docs.asdecided.com/start-here/)
+- [Five-minute Core quickstart](https://docs.asdecided.com/vendor/core/quickstart/)
+- [Connect an agent](https://docs.asdecided.com/vendor/core/mcp/)
+- [Knowledge model](https://docs.asdecided.com/concepts/)
+- [Specification map](https://docs.asdecided.com/spec/)
+- [Schemas](https://docs.asdecided.com/spec/schemas/)
+- [How-to guides](https://docs.asdecided.com/how-to/)
+- [Reference map](https://docs.asdecided.com/reference/)
+- [Scale and performance](https://docs.asdecided.com/vendor/core/scale/)
+- [Ecosystem](https://docs.asdecided.com/ecosystem/)
+
+## Source authority
+
+- [AsDecided Core](https://github.com/asdecided/core)
+- [AsDecided specification](https://github.com/asdecided/spec)
+- [AsDecided organisation](https://github.com/asdecided)
