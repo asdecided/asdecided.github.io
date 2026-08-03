@@ -29,7 +29,6 @@ plugins:
 markdown_extensions:
   - admonition
   - attr_list
-  - footnotes
   - md_in_html
 
 extra_css:
@@ -52,8 +51,6 @@ nav:
       - Overview: start-here.md
       - Five-minute quickstart: vendor/core/quickstart.md
       - Connect an agent: vendor/core/mcp.md
-  - Articles:
-      - AGENTS.md is not a decision system: articles/agents-md-is-not-a-decision-system.md
   - Concepts:
       - Knowledge model: concepts/index.md
       - Artifact types: vendor/core/artifacts.md
