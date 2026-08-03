@@ -66,6 +66,15 @@ scale.
 
 </div>
 
+## Latest article
+
+### [`AGENTS.md` is not a decision system](articles/agents-md-is-not-a-decision-system.md)
+
+Repository instructions give coding agents useful context, but they do not
+reliably determine which technical decisions apply to a change or whether the
+implementation complied. A practical decision system must **record**, **route**,
+and **enforce** decisions.
+
 !!! info "Where does the truth live?"
     Normative RAC material is sourced from
     [`asdecided/spec`](https://github.com/asdecided/spec). Product behavior and
