@@ -1,7 +1,7 @@
 site_name: AsDecided Knowledge Base
 site_description: >-
   The specification, concepts, how-to guides, and reference for AsDecided.
-site_url: https://asdecided.github.io/
+site_url: https://docs.asdecided.com/
 repo_url: https://github.com/asdecided
 repo_name: asdecided
 docs_dir: knowledge
