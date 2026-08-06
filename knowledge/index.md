@@ -15,6 +15,8 @@ decision record your coding agents can follow.
 
 [Start with the model](start-here.md){ .md-button .md-button--primary }
 [Read the specification](spec/index.md){ .md-button }
+[Product site](https://asdecided.com/){ .md-button }
+[Canonical source map](https://asdecided.com/sources){ .md-button }
 
 </div>
 
@@ -70,4 +72,6 @@ scale.
     Normative RAC material is sourced from
     [`asdecided/spec`](https://github.com/asdecided/spec). Product behavior and
     commands are sourced from [`asdecided/core`](https://github.com/asdecided/core).
-    This site organizes those sources; it does not fork them.
+    This site organizes those sources; it does not fork them. The public
+    [source map](https://asdecided.com/sources) explains which surface to cite
+    for each kind of claim.
