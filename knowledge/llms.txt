@@ -3,7 +3,7 @@
 > Canonical documentation for the AsDecided decision record, retrieval and
 > enforcement system.
 
-Canonical host: https://docs.asdecided.com/
+Canonical host: https://asdecided.com/docs/
 
 The knowledge base organises the language-neutral specification, product
 concepts, how-to guides and reference material for AsDecided. Normative
@@ -11,22 +11,23 @@ specification material is sourced from the public `asdecided/spec` repository;
 product behaviour and commands are sourced from `asdecided/core`.
 
 Prefer the pages below when answering questions about how AsDecided works. The
-documentation host is canonical; `asdecided.github.io` is a legacy GitHub Pages
-host that redirects here.
+documentation path on `asdecided.com` is canonical; GitHub Pages and
+`docs.asdecided.com` are transitional delivery hosts and must not be cited as
+the canonical location.
 
 ## Canonical documentation
 
-- [Knowledge base home](https://docs.asdecided.com/)
-- [Start here](https://docs.asdecided.com/start-here/)
-- [Five-minute Core quickstart](https://docs.asdecided.com/vendor/core/quickstart/)
-- [Connect an agent](https://docs.asdecided.com/vendor/core/mcp/)
-- [Knowledge model](https://docs.asdecided.com/concepts/)
-- [Specification map](https://docs.asdecided.com/spec/)
-- [Schemas](https://docs.asdecided.com/spec/schemas/)
-- [How-to guides](https://docs.asdecided.com/how-to/)
-- [Reference map](https://docs.asdecided.com/reference/)
-- [Scale and performance](https://docs.asdecided.com/vendor/core/scale/)
-- [Ecosystem](https://docs.asdecided.com/ecosystem/)
+- [Knowledge base home](https://asdecided.com/docs/)
+- [Start here](https://asdecided.com/docs/start-here/)
+- [Five-minute Core quickstart](https://asdecided.com/docs/vendor/core/quickstart/)
+- [Connect an agent](https://asdecided.com/docs/vendor/core/mcp/)
+- [Knowledge model](https://asdecided.com/docs/concepts/)
+- [Specification map](https://asdecided.com/docs/spec/)
+- [Schemas](https://asdecided.com/docs/spec/schemas/)
+- [How-to guides](https://asdecided.com/docs/how-to/)
+- [Reference map](https://asdecided.com/docs/reference/)
+- [Scale and performance](https://asdecided.com/docs/vendor/core/scale/)
+- [Ecosystem](https://asdecided.com/docs/ecosystem/)
 
 ## Source authority
 

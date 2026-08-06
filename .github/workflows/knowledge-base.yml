@@ -39,6 +39,11 @@ jobs:
         run: ./scripts/vendor-knowledge.sh
       - name: Build knowledge base
         run: mkdocs build --strict
+      - name: Verify canonical documentation origin
+        run: |
+          test "$(grep -RIl 'rel=\"canonical\" href=\"https://asdecided.com/docs/' site --include='*.html' | wc -l)" -gt 0
+          ! grep -RIl 'rel=\"canonical\" href=\"https://docs.asdecided.com/' site --include='*.html'
+          grep -q 'https://asdecided.com/docs/' site/sitemap.xml
       - if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
