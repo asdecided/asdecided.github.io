@@ -1,11 +1,11 @@
 # AsDecided on the web
 
-Two public surfaces for [AsDecided](https://github.com/asdecided):
+AsDecided has two complementary public surfaces:
 
-- The product site is the concise introduction to AsDecided. It is deployed
-  through ChatGPT Sites.
-- GitHub Pages is the searchable knowledge base for the specification,
-  concepts, guides, and reference material.
+- [asdecided.com](https://asdecided.com/) is the product site, canonical answer layer, Notes and release record. It is deployed through ChatGPT Sites.
+- [docs.asdecided.com](https://docs.asdecided.com/) is the searchable knowledge base for the specification, concepts, guides and reference material.
+
+Use the [canonical source map](https://asdecided.com/sources) to match product claims to the specification, documentation, implementation or dated release evidence that governs them.
 
 ## Product site
 
