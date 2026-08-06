@@ -46,6 +46,8 @@ validation:
     not_found: info
 
 nav:
+  - Product site: https://asdecided.com/
+  - Canonical sources: https://asdecided.com/sources
   - Home: index.md
   - Start here:
       - Overview: start-here.md
