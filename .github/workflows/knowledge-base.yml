@@ -1,5 +1,7 @@
 name: Knowledge base
 
+# GitHub Pages is a transitional mirror; https://asdecided.com/docs/ is canonical.
+
 on:
   pull_request:
     paths:
